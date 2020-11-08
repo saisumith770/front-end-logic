@@ -1,7 +1,7 @@
 import App from '../../app'
 
 const subscribed = App.Collection()(collection => ({
-    primaryKey: 'id',
+    primaryKey: 'domain',
     defaultGroup: true,
     groups: {
         notifiers: collection.Group(),
@@ -11,7 +11,7 @@ const subscribed = App.Collection()(collection => ({
 }))
 
 const viewers = App.Collection()(collection => ({
-    primaryKey: 'id',
+    primaryKey: 'domain',
     defaultGroup: true,
     groups: {
         prime: collection.Group(),
