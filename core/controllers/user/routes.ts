@@ -2,7 +2,7 @@ import Api from '../../api'
 
 import { creatorInfo } from './interface'
 
-async function info(payload: { username: string, info: object }) {
+async function info(payload: { domain: string, info: object }) {
     return (await Api.post('app/user/info', payload))
 }
 

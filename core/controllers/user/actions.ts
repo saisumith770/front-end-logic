@@ -4,7 +4,7 @@ import collections from './collections'
 
 import { creatorInfo, userPayload } from './interface'
 
-function info(payload: { username: string, info: object }) {
+function info(payload: { domain: string, info: object }) {
     routes.info(payload)
         .then(data => {
             if (data.status === 200) states.user.set(data.data)
@@ -22,22 +22,50 @@ function update(payload: { user_id: string, data: object }) {
 
 function getInbox(user_id: string, payload: { date: Date, feed_id: string }) {
     routes.inbox(user_id, payload)
+        .then(data => {
+            if (data.status === 200) {
+                data.data.result.forEach((feed: {}) => {
+                    collections.feeds.collect(feed)
+                });
+                states.feed_id.set(data.data.cursor)
+            }
+        })
 }
 
 function updateState(user_id: string, payload: { state: object }) {
     routes.state(user_id, payload)
+        .then(data => {
+            if (data.status === 200) states.state.set(payload.state)
+        })
 }
 
-function createFeed(user_id: string, username: string, payload: { feed: object }) {
+function createFeed(user_id: string, username: string, payload: {
+    feed: {
+        user_id: string
+        feed_id: string
+        username: string
+        message: string
+        timestamp: Date
+    }
+}) {
     routes.createFeed(user_id, username, payload)
+        .then(data => {
+            if (data.status === 200) collections.feeds.collect(payload.feed)
+        })
 }
 
 function connect(user_id: string, payload: { App: object }) {
     routes.connect(user_id, payload)
+        .then(data => {
+            if (data.status === 200) collections.integrations.collect(payload.App)
+        })
 }
 
 function disconnect(user_id: string, platform: string) {
     routes.disconnect(user_id, platform)
+        .then(data => {
+            if (data.status === 200) collections.integrations.remove(platform)
+        })
 }
 
 function subscribed(user_id: string) {
