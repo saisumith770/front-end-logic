@@ -19,23 +19,7 @@ const viewers = App.Collection()(collection => ({
     }
 }))
 
-const feeds = App.Collection()(collection => ({
-    primaryKey: 'feed_id',
-    defaultGroup: true,
-    groups: {
-        vods: collection.Group(),
-        liveNotification: collection.Group()
-    }
-}))
-
-const integrations = App.Collection()(collection => ({
-    primaryKey: 'platform',
-    defaultGroup: true
-}))
-
 export default {
     subscribed,
-    viewers,
-    feeds,
-    integrations
+    viewers
 }
