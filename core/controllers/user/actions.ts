@@ -3,6 +3,7 @@ import states from './states'
 
 import { user_data } from './interface'
 
+//get user info and update state
 function info(payload: { domain: string, info: user_data }) {
     routes.info(payload)
         .then(data => {
@@ -11,6 +12,7 @@ function info(payload: { domain: string, info: user_data }) {
         })
 }
 
+//update user info and state
 function update(payload: { user_id: string, data: user_data }) {
     routes.update(payload)
         .then(data => {
@@ -19,6 +21,7 @@ function update(payload: { user_id: string, data: user_data }) {
         })
 }
 
+//get the current state
 function updateState(user_id: string, payload: { state: object }) {
     routes.state(user_id, payload)
         .then(data => {

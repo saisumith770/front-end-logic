@@ -1,5 +1,6 @@
 import App from '../../app'
 
+//collection for array of creators
 const subscribed = App.Collection()(collection => ({
     primaryKey: 'domain',
     defaultGroup: true,
@@ -10,6 +11,7 @@ const subscribed = App.Collection()(collection => ({
     }
 }))
 
+//collection for array of viewers
 const viewers = App.Collection()(collection => ({
     primaryKey: 'domain',
     defaultGroup: true,

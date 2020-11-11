@@ -2,6 +2,7 @@ import routes from './routes'
 import collections from './collections'
 import { userPayload, creatorInfo } from './interface'
 
+//get all subscriptions and store in a collection
 function subscribed(user_id: string) {
     routes.getSubscriptions(user_id)
         .then(data => {
@@ -16,6 +17,7 @@ function subscribed(user_id: string) {
         })
 }
 
+//get all viewers and store them in a collection
 function viewers(user_id: string) {
     routes.getSubscriptions(user_id)
         .then(data => {
@@ -30,6 +32,7 @@ function viewers(user_id: string) {
         })
 }
 
+//subscribe to a creator and store in the collection
 function subscribe(user_id: string, payload: { creator: creatorInfo, viewer_type: string }) {
     routes.subscribe(user_id, payload)
         .then(data => {
@@ -38,6 +41,7 @@ function subscribe(user_id: string, payload: { creator: creatorInfo, viewer_type
         })
 }
 
+//unsubcribe from a creator and remove from the collection
 function unsubscribe(user_id: string, payload: { creator: creatorInfo }) {
     routes.unsubscribe(user_id, payload)
         .then(data => {

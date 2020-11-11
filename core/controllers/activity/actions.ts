@@ -4,6 +4,7 @@ import collections from './collections'
 
 import { feed } from './interface'
 
+//function to handle the inbox which is a collection of feeds
 function getInbox(user_id: string, payload: { date: Date, feed_id: string }) {
     routes.inbox(user_id, payload)
         .then(data => {
@@ -16,6 +17,7 @@ function getInbox(user_id: string, payload: { date: Date, feed_id: string }) {
         })
 }
 
+//creating a new feed
 function createFeed(user_id: string, username: string, payload: { feed: feed }) {
     routes.createFeed(user_id, username, payload)
         .then(data => {
