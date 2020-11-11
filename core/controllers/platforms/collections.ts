@@ -1,7 +1,7 @@
 import App from '../../app'
 
 //store all your integrations
-const integrations = App.Collection()(collection => ({
+const integrations = App.Collection()(() => ({
     primaryKey: 'platform',
     defaultGroup: true
 }))

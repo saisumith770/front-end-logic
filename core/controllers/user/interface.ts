@@ -11,3 +11,12 @@ export interface user_data {
     vods?: boolean
     activity?: boolean
 }
+
+export enum user_state {
+    offline = "offline",
+    online = "online",
+    streaming = "STREAMING",
+    chatting = "CHATTING",
+    playing = "PLAYING",
+    listening = "LISTENING"
+}
