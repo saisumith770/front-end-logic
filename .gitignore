@@ -1,0 +1,11 @@
+#ignore the dotenv files
+.env
+
+#ignore the js files
+*.js
+
+#ignore VSCodeCounter files
+*.VSCodeCounter
+
+#ignore node_modules
+node_modules
